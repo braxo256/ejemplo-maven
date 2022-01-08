@@ -13,7 +13,7 @@ pipeline {
                         userRemoteConfigs: [[url: 'https://github.com/braxo256/ejemplo-maven']]])
             }
         }
-        stage("Paso 2: Compliar"){
+        stage("Paso 2: Compliar de pana"){
             steps {
                 script {
                 sh "echo 'Compile Code!'"
