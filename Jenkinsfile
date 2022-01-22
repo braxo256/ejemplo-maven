@@ -80,9 +80,10 @@ pipeline {
 
         stage("Paso 7: Levantar Springboot APP"){
             steps {
-                sh 'mvn spring-boot:run &'
+                sh 'java -jar DevOpsUsach2020-0.0.1.jar &'
                 // sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
             }
+            
         }
         stage("Paso 8: Dormir(Esperar 10sg) "){
             steps {
@@ -92,7 +93,7 @@ pipeline {
 
         stage("Paso 9: Test Alive Service - Testing Application!"){
             steps {
-                sh 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
+                sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
             }
         }
 
