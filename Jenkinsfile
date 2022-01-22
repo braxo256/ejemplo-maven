@@ -66,7 +66,7 @@ pipeline {
                                     artifactId: 'DevOpsUsach2020', 
                                     groupId: 'com.devopsusach2020', 
                                     packaging: 'jar',
-                                     version: '0.0.7'
+                                     version: '0.0.1'
                                 ]]]
             }     
             
@@ -74,14 +74,14 @@ pipeline {
         
         stage('Paso 6: Bajar Nexus Stage') {
             steps {
-                sh 'curl -X GET -u $NEXUS_USER:$NEXUS_PASS http://nexucito:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.7/DevOpsUsach2020-0.0.7.jar -O'
+                sh 'curl -X GET -u $NEXUS_USER:$NEXUS_PASS http://nexucito:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar -O'
             }
         }                
 
         stage("Paso 7: Levantar Springboot APP"){
             steps {
                 // sh 'mvn spring-boot:run &'
-                sh 'nohup bash java -jar DevOpsUsach2020-0.0.7.jar & >/dev/null'
+                sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
             }
         }
         stage("Paso 8: Dormir(Esperar 10sg) "){
@@ -92,7 +92,7 @@ pipeline {
 
         stage("Paso 9: Test Alive Service - Testing Application!"){
             steps {
-                sh 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
+                sh 'curl -X GET "http://localhost:8080/rest/mscovid/test?msg=testing"'
             }
         }
 
@@ -105,7 +105,7 @@ pipeline {
                                     classifier: '', 
                                     extension: '', 
                                     // filePath: '/var/jenkins_home/workspace/job-pipeline-webhook/build/DevOpsUsach2020-0.0.1.jar'
-                                    filePath: 'build/DevOpsUsach2020-0.0.7.jar'
+                                    filePath: 'build/DevOpsUsach2020-0.0.1.jar'
                                     ]],
                                 mavenCoordinate: [
                                     artifactId: 'DevOpsUsach2020', 
