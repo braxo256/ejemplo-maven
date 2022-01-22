@@ -80,13 +80,13 @@ pipeline {
 
         stage("Paso 7: Levantar Springboot APP"){
             steps {
-                // sh 'mvn spring-boot:run &'
-                sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
+                sh 'mvn spring-boot:run &'
+                // sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
             }
         }
         stage("Paso 8: Dormir(Esperar 10sg) "){
             steps {
-                sh 'sleep 20'
+                sh 'sleep 10'
             }
         }
 
@@ -111,7 +111,7 @@ pipeline {
                                     artifactId: 'DevOpsUsach2020', 
                                     groupId: 'com.devopsusach2020', 
                                     packaging: 'jar',
-                                     version: '1.0.0'
+                                    version: '1.0.0'
                                 ]]]
             }     
             
