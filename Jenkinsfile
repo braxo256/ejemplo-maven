@@ -82,13 +82,13 @@ pipeline {
 
         stage("Paso 7: Levantar Springboot APP"){
             steps {
-                sh 'nohup java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
+                sh 'java -jar DevOpsUsach2020-0.0.1.jar &'
             }
 
         }
-        stage("Paso 8: Dormir(Esperar 10sg) "){
+        stage("Paso 8: Dormir(Esperar 30) "){
             steps {
-                sh 'sleep 10'
+                sh 'sleep 30'
             }
         }
 
