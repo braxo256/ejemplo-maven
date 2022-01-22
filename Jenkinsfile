@@ -96,7 +96,7 @@ pipeline {
             }
         }
 
-        stage("Paso 5: Subida a Nexus"){
+        stage("Paso 10: Subida a Nexus"){
             steps{
                 nexusPublisher nexusInstanceId: 'nexus', 
                     nexusRepositoryId: 'devops-usach-nexus', 
