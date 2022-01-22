@@ -74,7 +74,9 @@ pipeline {
         
         stage('Paso 6: Bajar Nexus Stage') {
             steps {
+                sh 'chmod -R 777 DevOpsUsach2020-0.0.1.jar'
                 sh 'curl -X GET -u $NEXUS_USER:$NEXUS_PASS http://nexucito:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar -O'
+                sh 'chmod -R 777 DevOpsUsach2020-0.0.1.jar'
             }
         }                
 
@@ -83,7 +85,7 @@ pipeline {
                 sh 'java -jar DevOpsUsach2020-0.0.1.jar &'
                 // sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
             }
-            
+
         }
         stage("Paso 8: Dormir(Esperar 10sg) "){
             steps {
